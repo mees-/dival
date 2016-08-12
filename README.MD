@@ -2,11 +2,11 @@
 Dival is a small, pluggable and lightweight data validator.
 
 ## Usage
-To validate data with dival you need to create a template first (see api)
+To validate data with dival you need to create a template first (see api)  
 after you have created a template, simply pass it and the data to `dival.validate`
 
 ## template format
-example template for a person's data:
+example template for a person's data:  
 ```js
 {
   name:{type:'string', required:true},
@@ -14,7 +14,7 @@ example template for a person's data:
   familyMembers:{
     type:'array',
     child:[{
-      name:{type:'string'}
+      name:{type:'string'},
       age:{type:'number'}
     }]
   },
@@ -39,12 +39,12 @@ example template for a person's data:
   }
 }
 ```
-In this template, `name`,`age`, `inventory.child.drinks` etc. are fields and `type`, `child`, `depends`, etc. are rules
-so a template consists of fields and fields consist of rules
+In this template, `name`,`age`, `inventory.child.drinks` etc. are fields and `type`, `child`, `depends`, etc. are rules  
+so a template consists of fields and fields consist of rules  
 the names of the fields are the same as the names of the properties in the data
 
 ### array templates
-a template can be an array but the array can only contan one element, that element should be the field used to validate all the elements in the data.
+a template can be an array but the array can only contan one element, that element should be the field used to validate all the elements in the data.  
 example:
 ```js
 [{
@@ -67,7 +67,7 @@ there are several rules included in the standard library
 - `child`:`object or array` this rule is used to validate nested data, the value of this rule will be treated as a full template and will be validated
 
 ## types
-the `type` rule has some possible types, you can also add your own.
+the `type` rule has some possible types, you can also add your own.  
 types included by default are:
 - `string`
 - `object`
@@ -92,10 +92,10 @@ function customType(value) {
 }
 ```
 ##custom rules
-custom rules are like custom types but a bit more complicated.
-custom rules are objects with two properties: `validate` and `apply`
+custom rules are like custom types but a bit more complicated.  
+custom rules are objects with two properties: `validate` and `apply`  
 #### `rule.validate`
-this is a function that is used to determine wether the template is valid(/good) template
+this is a function that is used to determine wether the template is valid(/good) template.  
 an example is `rules.minLength.validate`:
 ```js
 validate(value, settings) {
@@ -137,7 +137,7 @@ the `settings` object has some usefull settings:
 - `path` the path in the template, this is the same format as used in the `depends` rule
 
 #### `rule.apply`
-this is a function that is called to apply the rule to the data
+this is a function that is called to apply the rule to the data  
 an example is:
 ```js
 function(ruleValue, data, settings) {
