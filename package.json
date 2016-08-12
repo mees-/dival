@@ -1,6 +1,6 @@
 {
   "name": "dival",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A simple, pluggable and lightweight data validator",
   "main": "index.js",
   "scripts": {
@@ -14,12 +14,12 @@
   ],
   "author": "Mees van Dijk",
   "license": "MIT",
-  "repository":{
-    "type":"git",
+  "repository": {
+    "type": "git",
     "url": "https://github.com/mees-/dival.git"
   },
-  "bugs":{
-    "url":"https://github.com/mees-/dival/issues"
+  "bugs": {
+    "url": "https://github.com/mees-/dival/issues"
   },
   "homepage": "https://github.com/mees-/dival"
 }
