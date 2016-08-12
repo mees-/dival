@@ -1,6 +1,6 @@
 {
   "name": "dival",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A simple, pluggable and lightweight data validator",
   "main": "index.js",
   "scripts": {
