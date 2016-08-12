@@ -13,5 +13,13 @@
     "valid"
   ],
   "author": "Mees van Dijk",
-  "license": "MIT"
+  "license": "MIT",
+  "repository":{
+    "type":"git",
+    "url": "https://github.com/mees-/dival.git"
+  },
+  "bugs":{
+    "url":"https://github.com/mees-/dival/issues"
+  },
+  "homepage": "https://github.com/mees-/dival"
 }
