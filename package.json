@@ -1,7 +1,7 @@
 {
   "name": "dival",
-  "version": "0.0.4",
-  "description": "A super simple and lightweight data validator",
+  "version": "1.0.0",
+  "description": "A simple, pluggable and lightweight data validator",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,8 +13,5 @@
     "valid"
   ],
   "author": "Mees van Dijk",
-  "license": "MIT",
-  "dependencies": {
-    
-  }
+  "license": "MIT"
 }
