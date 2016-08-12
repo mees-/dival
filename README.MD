@@ -58,8 +58,8 @@ example:
 
 ## rules
 there are several rules included in the standard library
-- `type`:`string (type)` this rule tests if the data matches the type available types are in the types section below
-- `required`:`boolean` if `true` this rule will check if the data exists and render the data invalid if de data doesn't exist. default value is `false`
+- `type`:`string (type)` this rule tests if the data matches the type. available types are in the types section below
+- `required`:`boolean` if `true` this rule will check if the data exists and invalidate the data if the data piece doesn't exist. default value is `false`
 - `depends`:`string` this rule is like required but instead of a boolean this rule checks wether the dependant exists, if it does the field which contains `depends` is required. for an example look above in the example template.
 - `value`:`any` this rule matches the data against the value of the rule and if they aren't exactly the same it will invalidate the data
 - `maxLength`:`number` this rule checks the data's `.length` property and if that is bigger than the rule's value it wil invalidate the data. if the data doesn't have a `.length` property this rule is not applied
@@ -79,7 +79,7 @@ types included by default are:
 - `field`
 - `template`
 
-the last two can be used to check wether an object is a field in a dival template or a dival template itself
+the last two can be used to check wether an object is a field in a dival template or a dival template itself.
 
 ### custom types
 custom types are functions of the form:
@@ -91,10 +91,13 @@ function customType(value) {
   return false;
 }
 ```
-##custom rules
+
+custom types can be added to a template in the `settings.types` object.  
+the key in `settings.types` is the string for the rule value.
+## custom rules
 custom rules are like custom types but a bit more complicated.  
-custom rules are objects with two properties: `validate` and `apply`  
-#### `rule.validate`
+custom rules are objects with two methods: `validate` and `apply`  
+#### `customRule.validate`
 this is a function that is used to determine wether the template is valid(/good) template.  
 an example is `rules.minLength.validate`:
 ```js
@@ -122,23 +125,20 @@ validate(value, settings) {
   return {passed:true}
 ```
 
-overall the `validate` function takes two arguments
-```js
-function (value, settings)
-```
+the `validate` function takes two arguments: `value` and `settings`.  
 the `value` is the value for the rule, so in `{type'string'}` the function `type.validate()` gets passed `'sting'` as `value`
 
 the `settings` object has some usefull settings:
 - `field` the field object that containts the rule
 - `types` the available types in the template, this also contains custom types if they are set
-- `class` this object contains references to the `Field` class and the `Template` class for validation
+- `rules` the available rules in the template, this also contains custom rules if they are set
+- `class` this object contains references to the `Field` class and the `Template` class
 - `template` the user-written template object
-- `rules` a reference to all the possible rules for the template, including possible custom rules
-- `path` the path in the template, this is the same format as used in the `depends` rule
+- `path` the path to this rule in the template, this is the same format as used in the `depends` rule
 
 #### `rule.apply`
 this is a function that is called to apply the rule to the data  
-an example is:
+an example is `rules.minLength.apply`:
 ```js
 function(ruleValue, data, settings) {
   //if the data isn't set this rule isn't applied
@@ -159,9 +159,10 @@ function(ruleValue, data, settings) {
 ```
 this function takes three agruments, `ruleValue`, `data`, `settings`
 - `ruleValue` is the value for the rule in the template
-- `data` is the value for the data (not the entire data just the data that if validated by the current field)
+- `data` is the value for the data (not the entire data just the data that is validated by the current field)
 - `settings` is an object containing the following:
   * `types` the types defined in the template
+  * `rules` the rules defined in the template
   * `fullData` the full data object
   * `template` an object containing the fields in the template
   * `path` a path to the current rule in the same format as the `depends` rule
@@ -169,10 +170,10 @@ this function takes three agruments, `ruleValue`, `data`, `settings`
 
 ## api
 ### `new dival.Template(template, settings)`
-`template` is an object that consists of fields and rules (see above for more explaination)
+`template` is an object that consists of fields and rules (see above for more explaination)  
 `settings` is an object with the following options:
 - `types` an object with custom types
 - `rules` an object with custom rules
 
 ### `dival.validate(tempalte, data)`
-this function takes the template created with `new dival.Template` and the data object, it will return `true` or `false` depending on wether the data passes the template
+this function takes the template created with `new dival.Template` and the data object, it will return `true` or `false` depending on wether the data conforms to the template
