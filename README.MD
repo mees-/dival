@@ -175,5 +175,5 @@ this function takes three agruments, `ruleValue`, `data`, `settings`
 - `types` an object with custom types
 - `rules` an object with custom rules
 
-### `dival.validate(tempalte, data)`
+### `dival.validate(template, data)`
 this function takes the template created with `new dival.Template` and the data object, it will return `true` or `false` depending on wether the data conforms to the template
