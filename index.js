@@ -1,5 +1,5 @@
 const validate = require('./lib/validate');
-const Template = require('./lib/template');
+const Template = require('./lib/Template');
 
 module.exports = {
   validate,
