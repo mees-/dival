@@ -1,25 +1,19 @@
 {
   "name": "dival",
-  "version": "1.1.4",
-  "description": "A simple, pluggable and lightweight data validator",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "validator",
-    "data",
-    "dival",
-    "valid"
-  ],
-  "author": "Mees van Dijk",
+  "version": "2.0.0-beta.1",
+  "description": "A library for validation javascript things",
+  "main": "dist/index.js",
+  "repository": "https://github.com/mees-/dival",
+  "author": "Mees van Dijk <mees@itisme.es>",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/mees-/dival.git"
-  },
-  "bugs": {
-    "url": "https://github.com/mees-/dival/issues"
-  },
-  "homepage": "https://github.com/mees-/dival"
+  "devDependencies": {
+    "ava": "^0.18.1",
+    "babel-preset-latest": "^6.22.0",
+    "eslint": "^3.15.0",
+    "eslint-config-mees": "3.x",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-eslint": "^3.0.1",
+    "gulp-sourcemaps": "^2.4.1"
+  }
 }
