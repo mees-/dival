@@ -1,7 +1,6 @@
-import Template from './Template'
-import validate from './quickValidate'
+// @flow
+import Template from './createTemplate'
 
-export default {
-  validate,
-  Template
-}
+// export in both ways
+export default Template
+export { Template }

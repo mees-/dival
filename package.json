@@ -6,14 +6,55 @@
   "repository": "https://github.com/mees-/dival",
   "author": "Mees van Dijk <mees@itisme.es>",
   "license": "MIT",
+  "scripts": {
+    "test": "eslint . && flow && ava ./src/**/*.spec.js"
+  },
   "devDependencies": {
     "ava": "^0.18.1",
+    "babel-eslint": "^7.1.1",
+    "babel-plugin-syntax-flow": "^6.18.0",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
     "babel-preset-latest": "^6.22.0",
+    "babel-preset-stage-3": "^6.22.0",
     "eslint": "^3.15.0",
     "eslint-config-mees": "3.x",
+    "flow-bin": "^0.39.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-eslint": "^3.0.1",
     "gulp-sourcemaps": "^2.4.1"
+  },
+  "ava": {
+    "files": [
+      "./src/**/*.spec.js"
+    ],
+    "failFast": false,
+    "tap": false,
+    "concurrency": 8,
+    "babel": "inherit",
+    "require": [
+      "babel-register"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "latest",
+      "stage-3"
+    ],
+    "plugins": [
+      "transform-flow-strip-types",
+      "syntax-flow"
+    ],
+    "sourceMaps": "inline"
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "extends": [
+      "mees"
+    ],
+    "env": {
+      "node": true,
+      "browser": true
+    }
   }
 }
