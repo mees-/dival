@@ -1,22 +1,23 @@
 // @flow
+import type { Rule, RuleMap } from '../types.flow.js'
+
 export default class Field {
   rules: Object
-  tests: Array<Function>
-  constructor(plain: Object, rules: Object) {
+  tests: Array<Rule>
+  constructor(plain: Object, rules: RuleMap) {
     this.rules = rules
     this.tests = []
 
-    for (const key of Object.keys(plain)) {
-      if (!(key in rules)) {
-        throw Error(`Rule ${ key } is unknown`)
+    for (const [ruleId, rule] of this.rules) {
+      if (ruleId in plain) {
+        this.tests.push(new rule(plain[ruleId]))
       }
-      this.tests.push(data => this.rules[key].test(data))
     }
   }
 
   test(data: mixed) {
     for (const test of this.tests) {
-      if (!test(data)) {
+      if (!test.test(data)) {
         return false
       }
     }
