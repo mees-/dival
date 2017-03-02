@@ -1,20 +1,18 @@
 // @flow
-type plainTemplate = Object | Array<Object>
+import type { RuleMap, plainTemplate } from './types.flow.js'
 
 import ArrayTemplate from './structures/ArrayTemplate'
 import ObjectTemplate from './structures/ObjectTemplate'
 
 export default function Template(
   plain: plainTemplate,
-  customRules: Object = {}
-) {
-  if ({}.toString.call(plain) === '[object Object]') {
-    return new ObjectTemplate(plain, customRules)
-  } else if (Array.isArray(plain)) {
+  customRules: RuleMap | Object = new Map()
+): ArrayTemplate | ObjectTemplate {
+  if (Array.isArray(plain)) {
     return new ArrayTemplate(plain, customRules)
+  } else if ({}.call.toString(plain) === '[object Object]') {
+    return new ObjectTemplate(plain, customRules)
   } else {
-    throw new Error(
-      'The template can only be constructed from an object or array'
-    )
+    throw new Error('invalid plain template')
   }
 }
