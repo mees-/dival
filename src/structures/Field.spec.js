@@ -43,23 +43,24 @@ test('runs all tests', t => {
   t.is(checks.length, 0)
 })
 
-test('exit after first fail', t => {
-  class RuleOne {
+test('exits after first fail', t => {
+  let isFirst = true
+  class Rule {
     test() {
-      return false
-    }
-  }
-  class RuleTwo {
-    test() {
-      t.fail(
+      if (!isFirst) {
+        t.fail(
         `this rule shouldn't have been checked because \
 the one before this one failed`
         )
+      }
+      isFirst = false
+
+      return false
     }
   }
   const rules = new Map([
-    ['one', RuleOne],
-    ['two', RuleTwo]
+    ['one', Rule],
+    ['two', Rule]
   ])
   const field = new Field({
     one: null,
