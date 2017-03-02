@@ -1,7 +1,7 @@
 // @flow
-import type { TypeMap, Rule } from '../types.flow.js'
+import type { TypeMap } from '../types.flow.js'
 
-const defaultTypes : TypeMap = {
+const types = {
   string: data => typeof data === 'string',
   boolean: data => typeof data === 'boolean',
   object: data => data.toString() === '[object Object]',
@@ -16,19 +16,23 @@ const defaultTypes : TypeMap = {
   promise: data => typeof data.then === 'function'
 }
 
-export default class TypeRule {
+export default class Type {
   types: TypeMap
   identifier: string
   setting: string
-  constructor(setting: ?string, customTypes: ?TypeMap = {}) {
-    (this: Rule)
-    this.identifier = 'type'
-    this.types = {
-      ...defaultTypes,
-      ...customTypes
-    }
 
-    this.setSetting(setting)
+  static identifier = 'type'
+  identifier = 'type'
+  types = types
+
+  constructor(setting: ?string) {
+    if (!setting) {
+      throw new Error('setting cannot be undefined')
+    }
+    if (!(setting in this.types)) {
+      throw new Error(`invalid setting: ${ setting }`)
+    }
+    this.setting = setting
   }
 
   test(data: any): boolean {
@@ -37,15 +41,5 @@ export default class TypeRule {
     } catch (e) {
       return false
     }
-  }
-
-  setSetting(setting: ?string) {
-    if (!setting) {
-      throw new Error('setting cannot be undefined')
-    }
-    if (!(setting in this.types)) {
-      throw new Error(`invalid setting: ${ setting }`)
-    }
-    this.setting = setting
   }
 }

@@ -1,12 +1,12 @@
 // @flow
-import type { Rule } from '../types.flow.js'
-
-export default class RequiredRule {
+export default class Required {
   identifier: string
   setting: boolean
+
+  static identifier = 'required'
+  identifier = 'required'
+
   constructor(setting: boolean) {
-    (this: Rule)
-    this.identifier = 'required'
     this.setting = setting
   }
 
