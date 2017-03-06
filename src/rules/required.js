@@ -1,17 +1,21 @@
 // @flow
 export default class Required {
-  identifier: string
+  id: string
   setting: boolean
 
-  static identifier = 'required'
-  identifier = 'required'
+  static id = 'required'
+  id = 'required'
 
   constructor(setting: boolean) {
     this.setting = setting
   }
 
-  test(data: ?any): boolean {
-    if (typeof data !== 'undefined') {
+  test(data: ?mixed): boolean {
+    if (!this.setting) {
+      // if something isn't required it always passes this test
+      return true
+    }
+    if (typeof data !== 'undefined' && data !== null) {
       return true
     } else {
       return false

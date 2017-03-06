@@ -1,7 +1,7 @@
 // @flow
 import type { TypeMap } from '../types.flow.js'
 
-const types = {
+const types: {[type: string]: (data: any) => boolean} = {
   string: data => typeof data === 'string',
   boolean: data => typeof data === 'boolean',
   object: data => data.toString() === '[object Object]',
@@ -13,16 +13,16 @@ const types = {
   error: data => data instanceof Error,
   regexp: data => data instanceof RegExp,
   function: data => typeof data === 'function',
-  promise: data => typeof data.then === 'function'
+  promise: data => data instanceof Promise
 }
 
 export default class Type {
   types: TypeMap
-  identifier: string
+  id: string
   setting: string
 
-  static identifier = 'type'
-  identifier = 'type'
+  static id = 'type'
+  id = 'type'
   types = types
 
   constructor(setting: ?string) {

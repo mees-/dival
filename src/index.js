@@ -1,5 +1,5 @@
 // @flow
-import Template from './createTemplate'
+import Template from './Template'
 
 // export in both ways
 export default Template

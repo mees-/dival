@@ -6,8 +6,8 @@ import required from './required'
 // import child from './child'
 
 const ruleMap: RuleMap = new Map()
-ruleMap.set(type.identifier, type)
-ruleMap.set(required.identifier, required)
-// ruleMap.set(child.identifier, child)
+ruleMap.set(type.id, type)
+ruleMap.set(required.id, required)
+// ruleMap.set(child.id, child)
 
 export default ruleMap

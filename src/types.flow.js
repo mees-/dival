@@ -5,9 +5,9 @@ export type TypeMap = {
 }
 
 export interface Rule {
-  identifier: string;
+  id: string;
   setting: any;
-  test(setting: any, data: any): boolean;
+  test(data: any): boolean;
 }
 
 export type RuleMap = Map<string, Class<Rule>>
@@ -16,4 +16,3 @@ export type plainField = { [rule: string]: any }
 export type plainObjectTemplate = { [key: string]: plainField }
 export type plainArrayTemplate = Array<plainField>
 export type plainTemplate = plainObjectTemplate | plainArrayTemplate
-
