@@ -30,7 +30,7 @@ const template = new Template({
 ```
 
 An optional second parameter can be
-given to the Template constructor, a custom rules Map, this is a [Map](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Map) with keys for the rules as map keys and the rules as values, more on what rules are further down.
+given to the Template constructor, a custom rules Map, this is a [Map](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Map) with rule identifiers as map keys and the rules themselves as values, more on what rules are further down.
 
 ### What is a field?
 a field is a key of a template, it is an object with rules identifiers as keys and rule settings as values, an example of a field:  
@@ -90,3 +90,8 @@ Note that these are all lower-case `strings`
 
 #### the required rule
 The most simple rule, takes a `boolean` as a setting and checks that a value is not undefined
+
+# TODO:
+- child rule
+- custom rules
+- arraytemplates
