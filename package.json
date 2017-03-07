@@ -15,6 +15,7 @@
     "babel-eslint": "^7.1.1",
     "babel-plugin-syntax-flow": "^6.18.0",
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "babel-polyfill": "^6.23.0",
     "babel-preset-latest": "^6.22.0",
     "babel-preset-stage-2": "^6.22.0",
     "babel-preset-stage-3": "^6.22.0",
@@ -36,7 +37,8 @@
     "concurrency": 8,
     "babel": "inherit",
     "require": [
-      "babel-register"
+      "babel-register",
+      "babel-polyfill"
     ]
   },
   "babel": {
