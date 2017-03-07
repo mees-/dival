@@ -2,7 +2,7 @@
 import type { Rule, RuleMap } from '../types.flow.js'
 
 export default class Field {
-  rules: Object
+  rules: RuleMap
   tests: Array<Rule>
   constructor(plain: Object, rules: RuleMap) {
     this.rules = rules
