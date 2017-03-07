@@ -1,4 +1,5 @@
 # dival
+[![Build Status](https://travis-ci.org/mees-/dival.svg?branch=master)](https://travis-ci.org/mees-/dival)
 > The data validation library for Node.js and the Browser
 
 ### This readme is currently incomplete
