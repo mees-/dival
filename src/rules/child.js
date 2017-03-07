@@ -9,6 +9,9 @@ export default class Child {
   id = 'child'
 
   constructor(setting: Template) {
+    if (!setting.isDivalTemplate) {
+      throw new Error('Value of child should be an instance of Template')
+    }
     this.setting = setting
   }
 

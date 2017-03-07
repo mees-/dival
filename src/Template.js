@@ -6,6 +6,7 @@ import ObjectTemplate from './structures/ObjectTemplate'
 
 export default class Template {
   template: ArrayTemplate | ObjectTemplate
+  isDivalTemplate = true
 
   constructor(plain: plainTemplate, customRules: RuleMap = new Map()) {
     if (Array.isArray(plain)) {

@@ -30,3 +30,10 @@ test('contains an instance of a Template', t => {
   const rule = new child(new Template({}))
   t.true(rule.setting instanceof Template)
 })
+
+test('throws when setting is not a template', t => {
+  t.throws(() => {
+    // flow-ignore
+    new child({}) // eslint-disable-line no-new
+  })
+})
