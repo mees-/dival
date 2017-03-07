@@ -37,3 +37,49 @@ test('throws when setting is not a template', t => {
     new child({}) // eslint-disable-line no-new
   })
 })
+
+test('works as rule in template with correct data', t => {
+  const template = new Template({
+    servers: {
+      type: 'object',
+      child: new Template({
+        google: {
+          type: 'string'
+        },
+        youtube: {
+          type: 'string'
+        }
+      })
+    }
+  })
+
+  t.true(template.test({
+    servers: {
+      google: 'google.com',
+      youtube: 'youtube.com'
+    }
+  }))
+})
+
+test('works as rule in template with incorrect data', t => {
+  const template = new Template({
+    servers: {
+      type: 'object',
+      child: new Template({
+        google: {
+          type: 'string'
+        },
+        youtube: {
+          type: 'string'
+        }
+      })
+    }
+  })
+
+  t.false(template.test({
+    servers: {
+      google: 1,
+      youtube: null
+    }
+  }))
+})
