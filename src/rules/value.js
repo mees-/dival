@@ -23,6 +23,7 @@ export default class Value {
         return true
       }
     }
+
     return false
   }
 }

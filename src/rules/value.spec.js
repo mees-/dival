@@ -3,7 +3,7 @@ import test from 'ava'
 import Value from './value'
 
 test('creates', () => {
-  new Value([])
+  new Value([]) // eslint-disable-line no-new
 })
 
 test('sets setting', t => {
