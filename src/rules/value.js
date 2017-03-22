@@ -6,9 +6,6 @@ export default class Value {
   id = 'value'
 
   constructor(setting: ?Array<mixed> | ?mixed) {
-    if (typeof setting === 'undefined') {
-      throw new Error('setting cannot be undefined')
-    }
     if (!Array.isArray(setting)) {
       this.setting = [setting]
     } else {

@@ -9,7 +9,7 @@ export default class Child {
   id = 'child'
 
   constructor(setting: ?Template) {
-    if (typeof setting === 'undefined') {
+    if (typeof setting === 'undefined' || setting === null) {
       throw new Error('setting cannot be undefined')
     }
     if (!setting.isDivalTemplate) {

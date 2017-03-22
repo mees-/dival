@@ -7,7 +7,7 @@ export default class Required {
   id = 'required'
 
   constructor(setting: ?boolean) {
-    if (typeof setting === 'undefined') {
+    if (typeof setting === 'undefined' || setting === null) {
       throw new Error('setting cannot be undefined')
     }
     this.setting = setting
