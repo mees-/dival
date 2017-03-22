@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "prepublish": "gulp",
-    "test": "eslint . && flow && ava ./src/**/*.spec.js"
+    "test": "eslint . && flow && ava"
   },
   "devDependencies": {
     "ava": "^0.18.1",
