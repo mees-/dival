@@ -1,12 +1,11 @@
 // @flow
-
 export default class Value {
   setting: Array<mixed>
 
   static id = 'value'
   id = 'value'
 
-  constructor(setting: ?Array<mixed> | ?any) {
+  constructor(setting: ?Array<mixed> | ?mixed) {
     if (!setting) {
       throw new Error('setting cannot be undefined')
     }
@@ -17,7 +16,7 @@ export default class Value {
     }
   }
 
-  test(data: ?mixed) {
+  test({ data }: { data: ?mixed }) {
     for (const possibleValue of this.setting) {
       if (data === possibleValue) {
         return true

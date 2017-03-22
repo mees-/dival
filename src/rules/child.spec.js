@@ -34,7 +34,7 @@ test('contains an instance of a Template', t => {
 test('throws when setting is not a template', t => {
   t.throws(() => {
     // flow-ignore
-    new child({}) // eslint-disable-line no-new
+    new child({ data: {} }) // eslint-disable-line no-new
   })
 })
 

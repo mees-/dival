@@ -8,14 +8,17 @@ export default class Child {
   static id = 'child'
   id = 'child'
 
-  constructor(setting: Template) {
+  constructor(setting: ?Template) {
+    if (!setting) {
+      throw new Error('setting cannot be undefined')
+    }
     if (!setting.isDivalTemplate) {
-      throw new Error('Value of child should be an instance of Template')
+      throw new Error('setting of child should be an instance of Template')
     }
     this.setting = setting
   }
 
-  test(data: mixed) {
+  test({ data }: { data: ?mixed }) {
     return this.setting.test(data)
   }
 }

@@ -29,9 +29,9 @@ const testType = (t, id) => {
   const rule = new type(id)
   for (const [typeId, value] of typeTests) {
     if (typeId === id) {
-      t.true(rule.test(value))
+      t.true(rule.test({ data: value }))
     } else {
-      t.false(rule.test(value))
+      t.false(rule.test({ data: value }))
     }
   }
 }
@@ -88,6 +88,6 @@ test('always passes undefined', t => {
   for (const [typeId] of typeTests) {
     const rule = new type(typeId)
     // eslint-disable-next-line no-undefined
-    t.true(rule.test(undefined))
+    t.true(rule.test({ data: undefined }))
   }
 })

@@ -23,7 +23,10 @@ export default class ArrayTemplate extends TemplateBase {
       return false
     }
     for (const element of data) {
-      if (!this.field.test(element)) {
+      const params = {
+        data: element
+      }
+      if (!this.field.test(params)) {
         return false
       }
     }

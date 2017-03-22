@@ -25,7 +25,10 @@ export default class ObjectTemplate extends TemplateBase {
     }
 
     for (const [key, field] of this.fields) {
-      if (!field.test(data[key])) {
+      const params = {
+        data: data[key]
+      }
+      if (!field.test(params)) {
         return false
       }
     }

@@ -35,7 +35,7 @@ export default class Type {
     this.setting = setting
   }
 
-  test(data: ?mixed): boolean {
+  test({ data }: { data: ?mixed }): boolean {
     if (typeof data === 'undefined') {
       return true
     }

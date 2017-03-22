@@ -16,28 +16,28 @@ test('contains id statically and on instance', t => {
 
 test('passes required, non-null/undef', t => {
   const rule = new required(true)
-  t.true(rule.test('string'))
-  t.true(rule.test(123))
-  t.true(rule.test(false))
+  t.true(rule.test({ data: 'string' }))
+  t.true(rule.test({ data: 123 }))
+  t.true(rule.test({ data: false }))
 })
 
 test('does not pass required null/undef', t => {
   const rule = new required(true)
-  t.false(rule.test(null))
+  t.false(rule.test({ data: null }))
   // eslint-disable-next-line no-undefined
-  t.false(rule.test(undefined))
+  t.false(rule.test({ data: undefined }))
 })
 
 test('passes unrequired non-null/undef', t => {
   const rule = new required(false)
-  t.true(rule.test('string'))
-  t.true(rule.test(123))
-  t.true(rule.test(true))
+  t.true(rule.test({ data: 'string' }))
+  t.true(rule.test({ data: 123 }))
+  t.true(rule.test({ data: true }))
 })
 
 test('passes unrequired null/undef', t => {
   const rule = new required(false)
-  t.true(rule.test(null))
+  t.true(rule.test({ data: null }))
   // eslint-disable-next-line no-undefined
-  t.true(rule.test(undefined))
+  t.true(rule.test({ data: undefined }))
 })

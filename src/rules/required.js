@@ -6,11 +6,14 @@ export default class Required {
   static id = 'required'
   id = 'required'
 
-  constructor(setting: boolean) {
+  constructor(setting: ?boolean) {
+    if (!setting) {
+      throw new Error('setting cannot be undefined')
+    }
     this.setting = setting
   }
 
-  test(data: ?mixed): boolean {
+  test({ data }: { data: ?mixed }): boolean {
     if (!this.setting) {
       // if something isn't required it always passes this test
       return true
