@@ -26,7 +26,7 @@ export default class Type {
   types = types
 
   constructor(setting: ?string) {
-    if (setting === undefined) {
+    if (typeof setting === 'undefined') {
       throw new Error('setting cannot be undefined')
     }
     if (!(setting in this.types)) {
