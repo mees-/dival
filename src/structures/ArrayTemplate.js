@@ -24,7 +24,9 @@ export default class ArrayTemplate extends TemplateBase {
     }
     for (const element of data) {
       const params = {
-        data: element
+        data: element,
+        parent: data,
+        templateType: 'array'
       }
       if (!this.field.test(params)) {
         return false

@@ -26,7 +26,9 @@ export default class ObjectTemplate extends TemplateBase {
 
     for (const [key, field] of this.fields) {
       const params = {
-        data: data[key]
+        data: data[key],
+        parent: data,
+        templateType: 'object'
       }
       if (!field.test(params)) {
         return false
